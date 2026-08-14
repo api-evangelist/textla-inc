@@ -16,20 +16,25 @@ x-backed-by:
 x-tier: stub
 x-tier-reason: portfolio-lead
 accessModel:
-  pricing: unknown
-  onboarding: unknown
-  trial: false
-  try_now: false
+  pricing: free-trial
+  onboarding: self-serve
+  trial: true
+  try_now: true
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
+  label: Free trial · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  generated: '2026-08-13'
   method: derived
+  note: >-
+    Product access, not API access. Textla publishes list pricing and a 14-day trial with 100
+    credits and a self-serve signup at app.textla.com/signup; it publishes no developer API,
+    so there is no API access model to record.
 image: https://cdn.prod.website-files.com/6621259acbeea8020086d69d/66460f7a6c72efba3794bea2_Textla%20OG%20Image.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - SMS
@@ -66,8 +71,49 @@ common:
   url: https://app.textla.com/login
 - type: DomainSecurity
   url: security/textla-inc-domain-security.yml
+- type: Documentation
+  url: https://help.textla.com/en/
+- type: HelpCenter
+  url: https://help.textla.com/en/
+- type: GettingStarted
+  url: https://help.textla.com/en/collections/3372929-get-started-with-textla
+- type: WellKnown
+  url: well-known/textla-inc-well-known.yml
+- type: Authentication
+  url: authentication/textla-inc-authentication.yml
+- type: Conformance
+  url: conformance/textla-inc-conformance.yml
+- type: Plans
+  url: plans/textla-inc-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/textla-inc-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/textla-inc-problem-types.yml
+- type: LLMsTxt
+  url: llms/textla-inc-llms.txt
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-13'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 10
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Textla ships only an end-user web app — every spec path (/openapi.json, /swagger.json,
+    /api-docs, /graphql, /llms.txt) 404s on www.textla.com and app.textla.com, its own
+    api.textla.com DNS record answers Cloudflare 1016 "origin DNS error" with nothing behind
+    it, and the one live GraphQL endpoint (portal-api.textla.com/graphql) is the undocumented
+    internal backend for app.textla.com with introspection disabled.
+  evidence:
+  - url: https://www.textla.com/openapi.json
+    status: 404
+  - url: https://api.textla.com/openapi.json
+    status: 530
+  - url: https://app.textla.com/llms.txt
+    status: 404
+  - url: https://portal-api.textla.com/graphql
+    status: 400
+  - url: https://auth.textla.com/.well-known/openid-configuration
+    status: 200
+  checked: '2026-08-13'

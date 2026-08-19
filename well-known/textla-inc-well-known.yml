@@ -1,0 +1,138 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every Textla host discovered in STEP 0b
+note: >-
+  Probed the marketing host (www.textla.com), the application host (app.textla.com),
+  the identity host (auth.textla.com), the DNS-advertised api.textla.com, and the two
+  backend hosts named in the app.textla.com JavaScript bundle
+  (portal-api.textla.com, portal-pubsub-api.textla.com). Only auth.textla.com serves a
+  real document: an OpenID Connect / OAuth 2.0 authorization-server discovery document
+  (an Auth0 tenant on a Textla-owned custom domain). www.textla.com answers every
+  /.well-known/* path with a Webflow "Invalid .well-known request" HTML stub at HTTP 404,
+  and api.textla.com answers every path with Cloudflare error 1016 (origin DNS error) —
+  neither is a document. No security.txt, api-catalog, ai-plugin.json or agent card is served
+  on any host.
+hosts:
+- host: auth.textla.com
+  probes:
+  - path: /.well-known/openid-configuration
+    url: https://auth.textla.com/.well-known/openid-configuration
+    status: 200
+    content_type: application/json; charset=utf-8
+    document: true
+    file: well-known/textla-inc-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    url: https://auth.textla.com/.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json; charset=utf-8
+    document: true
+    file: well-known/textla-inc-oauth-authorization-server.json
+  - path: /.well-known/jwks.json
+    url: https://auth.textla.com/.well-known/jwks.json
+    status: 200
+    document: true
+    file: null
+    note: JWKS reachable; not mirrored (rotating key material).
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+- host: www.textla.com
+  probes:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+    note: Webflow stub HTML "Invalid .well-known request".
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+- host: app.textla.com
+  probes:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+- host: api.textla.com
+  note: >-
+    DNS record exists and is fronted by Cloudflare, but every path returns HTTP 530
+    "error code: 1016" (origin DNS error). The hostname is advertised; nothing is served.
+  probes:
+  - path: /.well-known/security.txt
+    status: 530
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 530
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 530
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 530
+    document: false
+- host: portal-api.textla.com
+  probes:
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+- host: portal-pubsub-api.textla.com
+  probes:
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+summary:
+  hosts_probed: 6
+  paths_probed: 34
+  documents_served: 3
+  security_txt: false
+  agent_card: false
+  ai_plugin: false
+  api_catalog: false

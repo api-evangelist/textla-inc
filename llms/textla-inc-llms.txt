@@ -1,0 +1,57 @@
+# Textla Inc.
+
+> Textla is a US business texting platform for bulk SMS/MMS marketing campaigns and two-way
+> conversational messaging. It provides contact list segmentation, campaign scheduling and
+> personalization, a shared team inbox, CSV contact import, and delivery/analytics reporting,
+> with US-based human support. Textla operates on a bring-your-own-carrier (BYOC) model in
+> which customers connect their own Twilio account and phone numbers.
+
+**Textla publishes no public developer API.** As of 2026-08-13 there is no developer portal, no
+API reference, no OpenAPI/AsyncAPI/GraphQL SDL, no SDK in any package registry, no CLI, no MCP
+server and no A2A agent card. Programmatic integration is available only through Textla's
+Zapier app. Do not attempt to construct API calls to Textla — any endpoint you find is an
+undocumented internal backend for the app.textla.com web application and is not offered for
+third-party use.
+
+## Product
+
+- [Textla](https://www.textla.com): Company site and product overview.
+- [Product](https://www.textla.com/product): Feature overview — bulk messaging, two-way inbox, segmentation, scheduling, analytics, integrations.
+- [Pricing](https://www.textla.com/pricing): Starter $25/mo ($19/mo annual), Professional $50/mo ($39/mo annual), Enterprise contact-sales. Pay-as-you-go credits at $0.01/SMS and $0.03/MMS in the US. 14-day trial with 100 credits.
+- [Sign up](https://app.textla.com/signup) / [Log in](https://app.textla.com/login): The application.
+
+## Help center
+
+- [Help center](https://help.textla.com/en/): Intercom-hosted knowledge base; the closest thing to documentation Textla publishes.
+- [Get started with Textla](https://help.textla.com/en/collections/3372929-get-started-with-textla)
+- [Frequently asked questions](https://help.textla.com/en/collections/3376281-frequently-asked-questions)
+- [Docs for BYOC](https://help.textla.com/en/collections/3372927-docs-for-byoc): Connecting your own Twilio account, buying/porting numbers, A2P 10DLC and toll-free verification.
+- [Managing your phone numbers](https://help.textla.com/en/collections/17914453-managing-your-phone-numbers)
+- [Using your SMS inbox](https://help.textla.com/en/collections/18711226-using-your-sms-inbox)
+- [Billing](https://help.textla.com/en/collections/9094108-billing)
+- [Zapier integration](https://help.textla.com/en/collections/9274249-zapier-integration): The only documented programmatic path in or out of Textla.
+- [Error codes](https://help.textla.com/en/collections/11592238-error-codes): 14 published SMS/MMS delivery failure codes (4411, 4470, 4751, 4753, 21211, 21610, 21614, 30003, 30005, 30006, 30007, 30008, 30011, 60005).
+
+## Integration
+
+- [Textla on Zapier](https://zapier.com/apps/textla/integrations): No-code automation with tools such as HubSpot, Slack, Google Forms and Calendly. Textla is a Zapier partner.
+
+## Identity
+
+- [OpenID Connect discovery](https://auth.textla.com/.well-known/openid-configuration): Textla serves an OIDC/OAuth 2.0 discovery document at auth.textla.com (Auth0 tenant on a Textla custom domain). This authenticates humans into the Textla application; it is not a developer API credential surface.
+
+## Legal
+
+- [Terms of service](https://www.textla.com/terms): Customers warrant TCPA/TSR prior express consent; CAN-SPAM named as applicable law.
+- [Privacy policy](https://www.textla.com/privacy-policy)
+
+## Optional
+
+- [Blog](https://www.textla.com/blog): SMS marketing guides and playbooks.
+- [Contact / support](https://www.textla.com/contact): Phone, email and live chat, US-based.
+- [YouTube](https://www.youtube.com/channel/UCLufaWiqVY-xP9kC_quP3ug)
+
+---
+generated: 2026-08-13
+method: generated
+source: apis.yml + repo artifacts + probed Textla public surface (www.textla.com, help.textla.com, auth.textla.com); no /llms.txt is served by Textla (404 on www.textla.com and app.textla.com)

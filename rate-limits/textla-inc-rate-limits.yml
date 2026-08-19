@@ -1,0 +1,39 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.textla.com/pricing
+docs: https://help.textla.com/en/
+limit_count: 0
+note: >-
+  Textla publishes no API and therefore no API rate limits: no limit table, no window, no
+  burst allowance, and no RateLimit-*/X-RateLimit-*/Retry-After response-header contract is
+  documented anywhere on textla.com or in the help center. Searched the pricing page, the
+  help center collections (get started, FAQ, BYOC, error codes, billing, phone numbers,
+  inbox, Zapier) and the terms of service. The only throughput language published is
+  marketing copy — "unlimited daily sends" on the Starter and Professional plans and
+  "dedicated throughput" on Enterprise — neither of which states a number.
+limits: []
+response_headers: []
+exhaustion_status: null
+throughput_statements:
+- scope: plan
+  plan: Starter
+  statement: Unlimited daily sends
+  quantified: false
+  source: https://www.textla.com/pricing
+- scope: plan
+  plan: Professional
+  statement: Unlimited daily sends
+  quantified: false
+  source: https://www.textla.com/pricing
+- scope: plan
+  plan: Enterprise
+  statement: Dedicated throughput for high-volume senders
+  quantified: false
+  source: https://www.textla.com/pricing
+upstream_constraints:
+  note: >-
+    Real message throughput for Textla customers is governed upstream by carrier A2P 10DLC
+    registration and Twilio account limits under BYOC, not by a Textla-published limit. Textla
+    documents the 10DLC/toll-free verification process but publishes no resulting throughput
+    figures.
+  docs: https://help.textla.com/en/collections/3372927-docs-for-byoc

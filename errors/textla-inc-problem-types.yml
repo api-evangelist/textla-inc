@@ -1,0 +1,75 @@
+generated: '2026-08-13'
+method: searched
+source: https://help.textla.com/en/collections/11592238-error-codes
+format: vendor-codes
+note: >-
+  This is NOT an HTTP problem-type catalog. Textla publishes no API, so there is no
+  application/problem+json envelope, no RFC 9457 registry and no HTTP status contract to derive
+  from. What Textla does publish is a customer-facing SMS/MMS DELIVERY error-code reference in
+  its help center: 14 numeric codes surfaced in the Textla inbox and campaign reports when a
+  message fails. The codes are carrier/Twilio-lineage codes (the 21xxx/30xxx/60xxx families are
+  Twilio's; the 44xx/47xx families are carrier/aggregator codes), which is consistent with
+  Textla's documented BYOC-on-Twilio delivery path. Titles are quoted verbatim from the
+  published article titles; no meaning or remediation text is invented here.
+rfc9457: false
+envelope_field: null
+transport: message-delivery-status
+code_count: 14
+problem_types: []
+delivery_error_codes:
+- code: '4411'
+  title: File size too large
+  family: carrier/aggregator
+  url: https://help.textla.com/en/articles/10553370-error-4411-file-size-too-large
+- code: '4470'
+  title: Message Filtered
+  family: carrier/aggregator
+  url: https://help.textla.com/en/articles/10516946-error-4470-message-filtered
+- code: '4751'
+  title: Message is too long or message length is invalid for the carrier
+  family: carrier/aggregator
+  url: https://help.textla.com/en/articles/11327762-error-4751-message-is-too-long-or-message-length-is-invalid-for-the-carrier
+- code: '4753'
+  title: Destination Rejected Handset
+  family: carrier/aggregator
+  url: https://help.textla.com/en/articles/10705967-error-4753-destination-rejected-handset
+- code: '21211'
+  title: Landline or Unreachable Carrier
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517090-error-21211-landline-or-unreachable-carrier
+- code: '21610'
+  title: Contact Has Unsubscribed
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517099-error-21610-contact-has-unsubscribed
+- code: '21614'
+  title: "'To' Number is Not a Valid Mobile Number"
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517102-error-21614-to-number-is-not-a-valid-mobile-number
+- code: '30003'
+  title: Unreachable Destination
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517040-error-30003-unreachable-destination
+- code: '30005'
+  title: Unreachable Destination
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517046-error-30005-unreachable-destination
+- code: '30006'
+  title: Landline or Unreachable Carrier
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517064-error-30006-landline-or-unreachable-carrier
+- code: '30007'
+  title: Message Filtered
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517070-error-30007-message-filtered
+- code: '30008'
+  title: Unknown Error
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517079-error-30008-unknown-error
+- code: '30011'
+  title: MMS Unsupported
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517112-error-30011-mms-unsupported
+- code: '60005'
+  title: Downstream Carrier Error
+  family: twilio-lineage
+  url: https://help.textla.com/en/articles/10517086-error-60005-downstream-carrier-error

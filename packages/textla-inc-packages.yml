@@ -1,0 +1,35 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org/pypi/textla/json, rubygems.org search, crates.io search,
+  packagist.org search, api.github.com search + orgs/textla, and the Textla public site and
+  help center
+note: >-
+  No first-party Textla client library exists in any public package registry, and Textla
+  publishes no SDK, CLI or code sample anywhere on its site or help center. npm search for
+  "textla" returned 0 results; pypi.org/pypi/textla/json returned 404; RubyGems and crates.io
+  returned empty result sets; Packagist matched only unrelated packages (textalk/*,
+  thoni/simple_input_count). GitHub has no "textla" organization and no Textla-authored
+  repository. This is a consistent absence, not an unchecked field.
+official_count: 0
+community_count: 0
+packages: []
+registries_checked:
+- registry: npm
+  endpoint: https://registry.npmjs.org/-/v1/search?text=textla
+  result: 0 matches
+- registry: pypi
+  endpoint: https://pypi.org/pypi/textla/json
+  result: HTTP 404
+- registry: rubygems
+  endpoint: https://rubygems.org/api/v1/search.json?query=textla
+  result: empty array
+- registry: crates.io
+  endpoint: https://crates.io/api/v1/crates?q=textla
+  result: 0 matches
+- registry: packagist
+  endpoint: https://packagist.org/search.json?q=textla
+  result: no first-party match
+- registry: github
+  endpoint: https://api.github.com/orgs/textla
+  result: no Textla organization

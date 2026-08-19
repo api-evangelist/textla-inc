@@ -1,0 +1,119 @@
+generated: '2026-08-13'
+method: probed
+source: https://auth.textla.com/.well-known/openid-configuration
+note: >-
+  Textla ships no public API, so every API-shaped standard below is recorded as not-applicable
+  or not-conformant on the evidence rather than assumed. The only standards Textla demonstrably
+  implements are OAuth 2.0 / OpenID Connect, and only for signing humans in to its own web
+  application via an Auth0 tenant on auth.textla.com. Regulatory obligations named in Textla's
+  own terms (TCPA, TSR, CAN-SPAM) and the A2P 10DLC / toll-free verification process documented
+  in its help center are recorded as claims, not certifications — Textla publishes no audit
+  report, no trust center and no certification page.
+standards:
+- id: oidc
+  name: OpenID Connect Discovery 1.0
+  conforms: true
+  evidence: >-
+    https://auth.textla.com/.well-known/openid-configuration returns HTTP 200 with a valid
+    discovery document (issuer, authorization_endpoint, token_endpoint, userinfo_endpoint,
+    jwks_uri, response_types_supported, subject_types_supported, id_token_signing_alg_values_supported).
+  scope: application sign-in only, not a developer API
+- id: oauth2
+  name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  conforms: true
+  evidence: >-
+    https://auth.textla.com/.well-known/oauth-authorization-server returns HTTP 200 with
+    authorization-server metadata.
+  scope: application sign-in only, not a developer API
+- id: pkce
+  name: OAuth 2.0 PKCE (RFC 7636)
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256, plain].
+- id: dpop
+  name: OAuth 2.0 DPoP (RFC 9449)
+  conforms: true
+  evidence: dpop_signing_alg_values_supported = [ES256].
+- id: oauth21-posture
+  name: OAuth 2.1 deprecated-grant hygiene
+  conforms: false
+  evidence: >-
+    grant_types_supported still advertises implicit and password, and PKCE still advertises
+    "plain". Auth0 tenant defaults; no Textla hardening evident.
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: No public API and no application/problem+json envelope documented.
+- id: rfc8594
+  name: RFC 8594 Sunset header / deprecation signalling
+  conforms: false
+  evidence: No API, no versioning policy and no deprecation policy published.
+- id: securitytxt
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns 404 on www.textla.com, app.textla.com, auth.textla.com,
+    portal-api.textla.com and portal-pubsub-api.textla.com.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document served on any Textla host. Probed /openapi.json, /openapi.yaml,
+    /swagger.json, /v1/openapi.json, /api-docs, /docs and /redoc across www, app, api,
+    portal-api and portal-pubsub-api.
+- id: graphql
+  name: GraphQL
+  conforms: partial
+  evidence: >-
+    https://portal-api.textla.com/graphql answers an anonymous POST of {__typename} with
+    {"data":{"__typename":"Query"}} (HTTP 200), so a GraphQL server is live, but full
+    introspection is disabled (INTERNAL_SERVER_ERROR at HTTP 400) and the endpoint is an
+    undocumented internal backend for app.textla.com, not a published developer API. No SDL
+    could be obtained and none was fabricated.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: >-
+    No AsyncAPI document and no public webhook catalog. portal-pubsub-api.textla.com is an AWS
+    AppSync real-time endpoint used by the application; it rejects anonymous requests with
+    UnauthorizedException.
+- id: mcp
+  name: Model Context Protocol
+  conforms: false
+  evidence: No MCP server published or discoverable.
+- id: a2a
+  name: A2A Agent Card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json 404 on every Textla host.
+regulatory_claims:
+- id: tcpa
+  name: Telephone Consumer Protection Act
+  claimed: true
+  certified: false
+  evidence: >-
+    Terms of service require customers to warrant prior express consent "in accordance with
+    applicable federal, state, local laws ... including the TCPA and the TSR".
+  source: https://www.textla.com/terms
+- id: can-spam
+  name: CAN-SPAM Act
+  claimed: true
+  certified: false
+  evidence: Named in the terms of service as applicable law customers must follow.
+  source: https://www.textla.com/terms
+- id: a2p-10dlc
+  name: A2P 10DLC brand/campaign registration
+  claimed: true
+  certified: false
+  evidence: >-
+    Help center documents A2P 10DLC application and status checking, and toll-free
+    verification, through the customer's own Twilio account (BYOC).
+  source: https://help.textla.com/en/collections/3372927-docs-for-byoc
+certifications:
+  soc2: null
+  iso27001: null
+  pci_dss: null
+  hipaa: null
+  fedramp: null
+  gdpr: null
+  note: >-
+    No trust center, no certification page and no compliance claims of any kind found on
+    textla.com, the help center or the terms/privacy pages. Recorded as unknown, not as absent.

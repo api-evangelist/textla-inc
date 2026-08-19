@@ -1,0 +1,97 @@
+generated: '2026-08-13'
+method: probed
+source: https://auth.textla.com/.well-known/openid-configuration
+docs: null
+note: >-
+  Textla publishes no developer API and therefore no developer authentication documentation.
+  This profile is derived entirely from the OpenID Connect discovery document Textla serves
+  at auth.textla.com — an Auth0 tenant on a Textla-owned custom domain that fronts sign-in to
+  the app.textla.com application. It describes how HUMANS sign in to the product, not how a
+  third-party developer would authenticate to an API. No API key, personal access token, or
+  developer credential surface is documented anywhere on Textla's public site or help center.
+scope: application-signin
+provider: Auth0 (custom domain auth.textla.com)
+issuer: https://auth.textla.com/
+securitySchemes:
+- name: textla_openid_connect
+  type: openIdConnect
+  openIdConnectUrl: https://auth.textla.com/.well-known/openid-configuration
+  description: >-
+    OpenID Connect provider fronting the Textla web application. Advertised by Textla's own
+    host; no developer-facing client registration is documented publicly, though the tenant
+    exposes a dynamic registration endpoint.
+  endpoints:
+    authorization: https://auth.textla.com/authorize
+    token: https://auth.textla.com/oauth/token
+    userinfo: https://auth.textla.com/userinfo
+    jwks: https://auth.textla.com/.well-known/jwks.json
+    revocation: https://auth.textla.com/oauth/revoke
+    registration: https://auth.textla.com/oidc/register
+    device_authorization: https://auth.textla.com/oauth/device/code
+    backchannel_authentication: https://auth.textla.com/bc-authorize
+  grant_types:
+  - authorization_code
+  - client_credentials
+  - refresh_token
+  - password
+  - implicit
+  - urn:ietf:params:oauth:grant-type:device_code
+  - urn:ietf:params:oauth:grant-type:token-exchange
+  - urn:ietf:params:oauth:grant-type:jwt-bearer
+  pkce:
+    supported: true
+    methods:
+    - S256
+    - plain
+  token_endpoint_auth_methods:
+  - client_secret_basic
+  - client_secret_post
+  - private_key_jwt
+  - none
+  id_token_signing_algs:
+  - HS256
+  - RS256
+  - PS256
+  dpop_signing_algs:
+  - ES256
+observations:
+- id: pkce-s256
+  value: true
+  evidence: code_challenge_methods_supported includes S256.
+- id: plain-pkce-allowed
+  value: true
+  evidence: >-
+    code_challenge_methods_supported also includes "plain", which is weaker than S256 and is
+    an Auth0 tenant default rather than a deliberate Textla choice.
+- id: implicit-grant-enabled
+  value: true
+  evidence: >-
+    grant_types_supported includes "implicit" and "password" — both discouraged by OAuth 2.1.
+    Again an Auth0 tenant default, not evidence of a Textla design decision.
+- id: dpop-supported
+  value: true
+  evidence: dpop_signing_alg_values_supported includes ES256.
+- id: mtls
+  value: false
+  evidence: No mutualTLS or tls_client_auth advertised in the discovery document.
+scopes_advertised:
+- openid
+- profile
+- offline_access
+- name
+- given_name
+- family_name
+- nickname
+- email
+- email_verified
+- picture
+- created_at
+- identities
+- phone
+- address
+byoc_credentials:
+  note: >-
+    Textla's only documented credential flow for customers is BYOC (bring your own carrier):
+    the help center walks a customer through connecting their own Twilio account to Textla.
+    Those are Twilio credentials held by the customer, not a Textla API credential.
+  docs: https://help.textla.com/en/collections/3372927-docs-for-byoc

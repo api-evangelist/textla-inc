@@ -1,0 +1,84 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.textla.com/pricing
+note: >-
+  Product pricing for the Textla business-texting application. Textla publishes no developer
+  API, so there is no API plan, no per-call quota and no developer tier — these are seat/
+  subscription plans plus pay-as-you-go message credits. Prices captured verbatim from the
+  public pricing page.
+currency: USD
+billing_model: subscription + pay-as-you-go message credits
+plan_count: 3
+plans:
+- name: Starter
+  price: 25
+  price_annual_per_month: 19
+  currency: USD
+  period: month
+  annual_discount: 20%
+  contact_sales: false
+  included_quota: null
+  quota_note: >-
+    No included message allotment; messages are billed as pay-as-you-go credits. Marketed as
+    unlimited daily sends.
+  usage_rates:
+  - unit: SMS (US)
+    price: 0.01
+  - unit: MMS (US)
+    price: 0.03
+  - unit: SMS (Canada, per segment)
+    price: 0.02
+  - unit: MMS (Canada)
+    price: 0.03
+  features:
+  - Bulk messaging
+  - Direct / two-way messages
+  - Contact segmentation
+  - USA-based support
+- name: Professional
+  price: 50
+  price_annual_per_month: 39
+  currency: USD
+  period: month
+  annual_discount: 20%
+  contact_sales: false
+  included_quota: null
+  quota_note: Same pay-as-you-go credit model as Starter.
+  usage_rates:
+  - unit: SMS (US)
+    price: 0.01
+  - unit: MMS (US)
+    price: 0.03
+  features:
+  - Everything in Starter
+  - Scheduled and recurring campaigns
+  - Multiple team members
+  - Message personalization
+- name: Enterprise
+  price: null
+  currency: USD
+  period: month
+  contact_sales: true
+  quota_note: Custom, for high-volume senders.
+  features:
+  - Dedicated throughput
+  - Custom configuration
+trial:
+  available: true
+  length_days: 14
+  included_credits: 100
+  card_required: unknown
+credits:
+  rollover: n/a
+  expiry: none
+  statement: >-
+    "No need to worry about rollover credits with Textla. We are simply pay-as-you-go. Once you
+    purchase credits, you have them for the lifetime of your time as a Textla customer."
+carrier_fees:
+  included: true
+  statement: >-
+    "We cover the cost of carrier fees in our standard price-per-text rate and there are zero
+    hidden fees whatsoever."
+api_access:
+  included_in_any_plan: false
+  note: No plan on the public pricing page mentions API access, API keys, or developer limits.

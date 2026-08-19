@@ -32,7 +32,7 @@ accessModel:
     credits and a self-serve signup at app.textla.com/signup; it publishes no developer API,
     so there is no API access model to record.
 image: https://cdn.prod.website-files.com/6621259acbeea8020086d69d/66460f7a6c72efba3794bea2_Textla%20OG%20Image.png
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-13'
 tags:

@@ -1,5 +1,5 @@
 aid: textla-inc
-name: Textla Inc.
+name: Textla
 description: Textla is a business texting platform for sending bulk SMS marketing campaigns
   and two-way conversational messages to customers. It provides contact list segmentation,
   message scheduling and personalization, a shared team inbox for direct/two-way replies,
@@ -128,3 +128,4 @@ x-coverage:
   - url: https://auth.textla.com/.well-known/openid-configuration
     status: 200
   checked: '2026-08-13'
+x-legal-name: Textla Inc.
